@@ -49,3 +49,15 @@ func AddSiswa (c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, newSiswa)
 }
 
+func SingleSiswa (c *gin.Context) {
+	id := c.Param("id")
+
+	for _, dataSiswa := range siswas {
+		if dataSiswa.Id == id {
+			c.IndentedJSON(http.StatusOK, dataSiswa)
+			return
+		}
+	}
+
+	c.IndentedJSON(http.StatusNotFound, "Data tidak ditemukan")
+}

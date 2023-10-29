@@ -42,3 +42,16 @@ func StoreBuku (c *gin.Context) {
 	bukus = append(bukus, newBuku)
 	c.IndentedJSON(http.StatusCreated, newBuku)
 }
+
+func SingleBuku (c *gin.Context) {
+	id := c.Param("id")
+
+	for _, dataBuku := range bukus {
+		if dataBuku.Id == id {
+			c.IndentedJSON(http.StatusOK, dataBuku)
+			return
+		}
+	}
+
+	c.IndentedJSON(http.StatusNotFound, "Data tidak ditemukan")
+}

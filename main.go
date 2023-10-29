@@ -13,9 +13,11 @@ func main() {
 
 	r.GET("/siswa", siswa.IndexSiswa)
 	r.POST("/siswa", siswa.AddSiswa)
+	r.GET("/siswa/:id", siswa.SingleSiswa)
 
 	r.GET("/buku", buku.IndexBuku)
 	r.POST("/buku", buku.StoreBuku)
+	r.GET("/buku/:id", buku.SingleBuku)
 
 	r.GET("/menu", makanan.IndexMenu)
 	r.POST("/menu", makanan.StoreMenu)
